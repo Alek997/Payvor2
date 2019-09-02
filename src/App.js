@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "antd/dist/antd.css";
+import "./App.css";
+import { Route, Redirect, Switch } from "react-router-dom";
+import Nav from "./Nav";
+import Home from "./Screens/Home";
+import Ads from "./Screens/Ads";
+import Users from "./Screens/Users";
+import Login from "./Screens/Login";
+import Register from "./Screens/Register";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/ads" component={Ads} />
+        <Route path="/user" component={Users} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Redirect to="/home" />
+      </Switch>
     </div>
   );
 }
